@@ -1,0 +1,52 @@
+# Description:
+#   This creates a Kali building environment for the qBittorrent application
+# Usage:
+#   From this directory, run $ sudo docker build -t tkalibuildenv .
+
+# By default, runs as root
+# List of containers for kali are here:
+# https://gitlab.com/kalilinux/build-scripts/kali-docker/container_registry
+
+# Pull kali:2019.4
+FROM registry.gitlab.com/kalilinux/build-scripts/kali-docker/kali:2019.4
+
+#update and upgrade
+RUN apt-get update
+RUN apt-get upgrade -y
+
+#install utilities and dependencies
+RUN apt-get install apt-utils dpkg-dev net-tools iputils-ping git pkg-config wget systemd texinfo -y
+RUN apt-get install build-essential vim help2man autotools-dev autoconf automake libtool -y
+RUN apt-get install libboost-dev libboost-system-dev libboost-chrono-dev libboost-random-dev libssl-dev libgeoip-dev -y
+RUN apt-get install qtbase5-dev qttools5-dev-tools libqt5svg5-dev -y
+RUN apt-get install zlib1g-dev -y
+RUN apt-get install python3 -y
+
+#Download libtorrent-rasterbar-1.2.4
+RUN wget https://github.com/arvidn/libtorrent/releases/download/libtorrent-1_2_4/libtorrent-rasterbar-1.2.4.tar.gz
+RUN tar -zxvf libtorrent-rasterbar-1.2.4.tar.gz
+WORKDIR /libtorrent-rasterbar-1.2.4
+RUN ./configure --disable-debug --enable-encryption CXXFLAGS="-std=c++14"
+RUN make clean && make && make install 
+WORKDIR /
+
+# Download qBittorrent-4.2.2
+RUN wget https://sourceforge.net/projects/qbittorrent/files/qbittorrent/qbittorrent-4.2.2/qbittorrent-4.2.2.tar.gz
+RUN tar -zxvf qbittorrent-4.2.2.tar.gz
+WORKDIR /qbittorrent-4.2.2
+RUN ./configure --disable-gui
+RUN make
+WORKDIR /
+
+## This part is for cross-compile
+# Create a directory for mounting gnu toolchain with cross-compiler from a host folder
+#RUN mkdir -p /opt/gnu
+#RUN useradd -ms /bin/bash dummy
+#RUN useradd -m dummy
+#RUN usermod -aG sudo dummy
+#RUN usermod -s /bin/bash dummy
+#COPY cross-compile.sh /home/dummy/.
+
+# Finished!
+#RUN echo 'Container is ready, run it using $ sudo docker run --name kalibuildenv -v /opt/gnu:/opt/gnu -it tkalibuildenv:latest' (for cross-compile)
+RUN echo 'Container is ready, run it using $ sudo docker run --name kalibuildenv -it tkalibuildenv:latest bash' 
