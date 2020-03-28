@@ -1,2 +1,3 @@
 # Network-Security-2020Spring
-Homeworks and related materials for JHU Network Security course
+
+Repository for Homework 2 including related source code and materials.
