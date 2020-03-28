@@ -19,7 +19,10 @@ See instructions [here](https://github.com/jhu-information-security-institute/Nw
 2. Build the container `$ sudo docker build -t tubuntubuildenv:2 .`
 3. run the container `$ sudo docker run --name ubuntubuildenv2 -v /opt/gnu:/opt/gnu -it -d tubuntubuildenv:2`
 4. From the host, copy the cross-compile.sh file into it using:`$ sudo docker cp cross-compile.sh ubuntubuildenv2:/qbittorrent-4.2.2`
-5. Run the container:  `$ sudo docker start ubuntubuildenv2` `$ sudo docker exec -it ubuntubuildenv2 bash`
+5. Run the container:  
+    `$ sudo docker start ubuntubuildenv2` 
+    
+    `$ sudo docker exec -it ubuntubuildenv2 bash`
 6. Go to the qbittorrent folder: `$ cd /qbittorrent-4.2.2`
 7. then, build it by running `$ sh cross-compile.sh`
 
@@ -94,11 +97,16 @@ After running the building environment, we need to copy the compiled executable 
     `$ sudo docker cp libtorrent-rasterbar.so.10 kalirunenv:/usr/local/lib/`
 
     `$ sudo docker cp libtorrent-rasterbar.so.10.0.0 kalirunenv:/usr/local/lib/` 
-5. Then enter the container to run the application: `$ sudo docker exec -it kalirunenv bash`
-6. Add path to run in the terminal: `$ echo /opt/usr/lib > /etc/ld.so.conf.d/qbittorrent.conf && ldconfig`
-7. Then start the application: `$ qbittorrent-nox`
+1. Then enter the container to run the application: `$ sudo docker exec -it kalirunenv bash`
+2. Add path to run in the terminal: `$ echo /opt/usr/lib > /etc/ld.so.conf.d/qbittorrent.conf && ldconfig`
+3. Then start the application: `$ qbittorrent-nox`
 
-## qBittorrent controls and queries status
+## qBittorrent-nox controls and queries status
 
-
+- Setting up qBittorrent on Ubuntu server - [link](https://github.com/qbittorrent/qBittorrent/wiki/Setting-up-qBittorrent-on-Ubuntu-server-as-daemon-with-Web-interface-(15.04-and-newer))
+- Starting qBittorrent `$ sudo systemctl start qbittorrent`
+- Stopping qBittorrent: `$ sudo systemctl stop qbittorrent`
+- Check status: `$ sudo systemctl status qbittorrent`
+- Check version: `$ qbittorrent-nox --version`
+- Set qBittorrent to monitor a particular folder or url. When you put a .torrent file in the folder or the url points to a torrent file, it will start downloading it. `qbittorrent−nox [−−webui-port=x] [TORRENT_FILE | URL]`
 
