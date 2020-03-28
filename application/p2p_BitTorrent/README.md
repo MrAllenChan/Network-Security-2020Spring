@@ -8,6 +8,7 @@ Install KaliVM on Mac OSX, see [details here](https://github.com/jhu-information
 
 1. Install Docker and Docker machine on KaliVM and Ubuntu
 2. Test Docker was installed correctly: `$ docker run hello-world`
+3. Any issue related with connection failure please refer to (https://stackoverflow.com/questions/21871479/docker-cant-connect-to-docker-daemon)
 
 ## Setup KaliVM on Raspberry Pi (later changed to Ubuntu) and Network Setup for RPi
 
