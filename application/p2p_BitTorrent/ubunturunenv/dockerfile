@@ -1,7 +1,7 @@
 # Description:
 #   This creates a Ubuntu running Docker environment for the qBittorrent Application
 # Usages:
-#   From this directory, run $ sudo docker build -t tubunturunenv .
+#   From this directory, run $ sudo docker build -t tubunturunenv:latest .
 
 # By default, runs as root
 FROM ubuntu:18.04

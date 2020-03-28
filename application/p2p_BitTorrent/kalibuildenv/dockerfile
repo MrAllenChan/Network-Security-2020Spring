@@ -1,7 +1,7 @@
 # Description:
 #   This creates a Kali building environment for the qBittorrent application
 # Usage:
-#   From this directory, run $ sudo docker build -t tkalibuildenv .
+#   From this directory, run $ sudo docker build -t tkalibuildenv:latest .
 
 # By default, runs as root
 # List of containers for kali are here:
