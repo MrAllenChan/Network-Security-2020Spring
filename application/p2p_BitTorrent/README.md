@@ -54,9 +54,12 @@ See instructions [here](https://github.com/jhu-information-security-institute/Nw
     To run the application in the runtime environment, we need to copy the generated binary file and dependency library to the local folder, then copy into the runtime container later.
 
 7. Copy the binary files and dependencies to the runtime folder: 
-`$ sudo docker cp kalibuildenv:/usr/local/bin/qbittorrent-nox ../kalirunenv`
-`$ sudo docker cp kalibuildenv:/usr/local/lib/libtorrent-rasterbar.so.10 ../kalirunenv`
-`$ sudo docker cp kalibuildenv:/usr/local/lib/libtorrent-rasterbar.so.10.0.0 ../kalirunenv`
+
+    `$ sudo docker cp kalibuildenv:/usr/local/bin/qbittorrent-nox ../kalirunenv`
+
+    `$ sudo docker cp kalibuildenv:/usr/local/lib/libtorrent-rasterbar.so.10 ../kalirunenv`
+    
+    `$ sudo docker cp kalibuildenv:/usr/local/lib/libtorrent-rasterbar.so.10.0.0 ../kalirunenv`
 
 ## Setup runtime environment (RPI running Ubuntu OS)
 
