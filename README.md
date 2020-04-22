@@ -1,3 +1,3 @@
-# Network-Security-2020Spring
+# Network Security - Johns Hopkins University
 
-Repository for Homework 2 including related source code and materials.
+Homework including Security-related Labs and Programmings.
