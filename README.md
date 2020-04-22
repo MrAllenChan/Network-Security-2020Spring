@@ -1,3 +1,3 @@
 # Network Security - Johns Hopkins University
 
-Homework including Security-related Labs and Programmings.
+Homework including security-related Labs and Programmings.
